@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTodos } from '../hooks';
 import styles from './App.module.css';
-import { TodoList } from '../components';
+import { MainPage, TodoPage, NotFoundPage } from '../pages';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
 	const {
@@ -18,53 +19,40 @@ function App() {
 		isSorted,
 		setIsSorted,
 	} = useTodos();
-
 	return (
 		<div className={styles.app}>
-			{isLoading ? (
-				<div className={styles.loader}></div>
-			) : (
-				<>
-					<div className={styles.controls}>
-						<input
-							type="text"
-							className={styles.search}
-							placeholder="Поиск по задачам..."
-							value={searchQuery}
-							onChange={(e) => setSearchQuery(e.target.value)}
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<MainPage
+							isLoading={isLoading}
+							searchQuery={searchQuery}
+							setSearchQuery={setSearchQuery}
+							isSorted={isSorted}
+							setIsSorted={setIsSorted}
+							todos={todos}
+							addTodo={addTodo}
+							newTodo={newTodo}
+							setNewTodo={setNewTodo}
+							isCreating={isCreating}
 						/>
-						<button
-							className={styles.btn}
-							onClick={() => setIsSorted(!isSorted)}
-						>
-							{isSorted ? 'Отключить сортировку' : 'Сортировать A-Z'}
-						</button>
-					</div>
-
-					<TodoList
-						todos={todos}
-						updateTodo={updateTodo}
-						deleteTodo={deleteTodo}
-					/>
-
-					<form className={styles.form} onSubmit={addTodo}>
-						<input
-							type="text"
-							className={styles.input}
-							value={newTodo}
-							onChange={(e) => setNewTodo(e.target.value)}
-							placeholder="Введите задачу"
+					}
+				/>
+				<Route
+					path="/todo/:id"
+					element={
+						<TodoPage
+							isLoading={isLoading}
+							todos={todos}
+							updateTodo={updateTodo}
+							deleteTodo={deleteTodo}
 						/>
-						<button
-							type="submit"
-							className={styles.btn}
-							disabled={isCreating}
-						>
-							{isCreating ? 'Добавление...' : 'Добавить'}
-						</button>
-					</form>
-				</>
-			)}
+					}
+				/>
+				<Route path="/404" element={<NotFoundPage />} />
+				<Route path="*" element={<Navigate to="/404" />} />
+			</Routes>
 		</div>
 	);
 }

@@ -1,0 +1,8 @@
+.nfPage {
+	font-size: 40px;
+	font-weight: 900;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}

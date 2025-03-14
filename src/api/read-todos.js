@@ -14,4 +14,4 @@ export const readTodos = (setIsLoading, setTodos) => {
 			.catch((error) => console.error('Ошибка:', error))
 			.finally(() => setIsLoading(false));
 	}, []);
-}
+};

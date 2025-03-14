@@ -1,24 +1,10 @@
-.todoItem{
-	font-size: 15px;
-	border: 5px solid gray;
-	border-radius: 10px;
-	padding: 5px;
-	display: flex;
-	align-items: center;
-	gap: 5px;
+.previewText {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
 }
 
-.task {
-	font-weight: bold;
-	font-size: 20px;
-	border: 2px solid gray;
-	border-radius: 15px;
-	padding: 5px;
-	display: inline-block;
-	margin-right: 5px;
-}
-
-.svg{
-	width: 20px;
-	margin-left: 5px;
+.fullText {
+	white-space: normal;
 }

@@ -1,0 +1,45 @@
+.todoItem {
+	font-size: 15px;
+	border: 5px solid gray;
+	border-radius: 10px;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.itemText {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex: 1 1 auto;
+}
+
+.task {
+	font-weight: bold;
+	font-size: 20px;
+	border: 2px solid gray;
+	border-radius: 15px;
+	padding: 5px;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.svg {
+	width: 20px;
+	margin-left: 5px;
+}
+
+.backButton {
+	border: 2px solid black;
+}
+
+.input {
+	width: 100%;
+	resize: vertical;
+	padding: 8px;
+	border: 1px solid black;
+	border-radius: 5px;
+}

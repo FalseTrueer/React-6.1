@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	readTodos,
 	addNewTodo,
@@ -6,7 +6,7 @@ import {
 	deleteCurTodo,
 	filterTodos,
 	sortTodos,
-} from '../utils';
+} from '../api';
 
 export function useTodos() {
 	const [todos, setTodos] = useState([]);
